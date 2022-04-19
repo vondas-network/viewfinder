@@ -1,7 +1,5 @@
 # viewfinder
 
-Multi-chain EVM data for Etherscane & Etherscan-clones
-
 <h3 align="center">
   <img height="255" width="253" src="https://github.com/vondas-network/viewfinder/blob/main/img/247082.png"/>
 </h3>
@@ -10,16 +8,11 @@ Multi-chain EVM data for Etherscane & Etherscan-clones
 _Viewfinder_ is a single API for most EVM blockchain. The project extends [sebs-etherscan](https://github.com/sebs/etherscan-api) API to more EVM blockchains. New methods are added by scanning each blockchain for their available methods. Each blockchain requires an API key that can be found for free (with restrictions) on Etherscan and Etherscan-clones (ex. Snowtrace, BSCscan, etc.). API keys are loaded using an _.env_ file, more information below.
 
 # Requirements
-
 - [Node.js](https://nodejs.org/en/download/)
-
 - [dotenv](https://www.npmjs.com/package/dotenv) 
-
 - API key (*listed below*)
 
-
 # Support Blockchains
-
 ## Testnet
 
 | Testnet | Blockchain | Endpoint                         |
@@ -44,17 +37,24 @@ _Viewfinder_ is a single API for most EVM blockchain. The project extends [sebs-
 | Hooscan   | https://api.hooscan.com             | https://hooscan.com/apis                     |
 | Optimism  | https://api-optimistic.etherscan.io | https://optimistic.etherscan.io/apis         |
 
-
-
 # Installation
-
-## Production
-
+## Installing from npm
 ``` npm i -g viewfinder ``` 
+## Installing from source
+- Clone the git repository
+- Install dependencies
+  `npm i`
+- Run the project
+  `node index.js`
 
-**in-progress*
+# Usage
 
-# Environmental Variables
+## Create .env file for Environmental Variables 
+
+- In a new project filder, create a new file for the environmental variables called `.env`
+- Copy/paste the text below into the `.env` file
+- Remove `XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX` and add the associated *API Key* 
+- Save `.env`
 
 ````bash
 # ADD API KEYS HERE
@@ -70,60 +70,31 @@ FANTOM_API_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 HOOSCAN_API_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 OPTIMISM_API_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ````
-
-
-
-# Usage
-
-```javascript
-// Ethereum
-var eth = require('./viewfinder').init('ethereum');
-console.log(eth);
-
-// Avalanche
-var avax = require('./viewfinder').init('avalanche');
-console.log(avax);
-
-// Binance
-var binance = require('./viewfinder').init('binance');
-console.log(binance);
-
-// Heco
-var heco = require('./viewfinder').init('heco');
-console.log(heco);
-
-// Cronos
-var cronos = require('./viewfinder').init('cronos');
-console.log(cronos);
-
-// Moonriver
-var moonriver = require('./viewfinder').init('moonriver');
-console.log(moonriver);
-
-// Moonbeam
-var moonbeam = require('./viewfinder').init('moonbeam');
-console.log(moonbeam);
-
-// Arbitrum
-var arbitrum = require('./viewfinder').init('arbitrum');
-console.log(arbitrum);
-
-// Fantom
-var fantom = require('./viewfinder').init('fantom');
-console.log(fantom);
-
-// Hooscan
-var hooscan = require('./viewfinder').init('hooscan');
-console.log(hooscan);
-
-// Optimism
-var optimism = require('./viewfinder').init('optimism');
-console.log(optimism);
+- The *API keys* above are associated with an array located in `init.js`
 ```
+var chainKey = {
+    "keyEthereum": process.env.ETHEREUM_API_KEY,
+    "keyAvalanche": process.env.AVALANCHE_API_KEY,
+    "keyBinance": process.env.BINANCE_API_KEY,
+    "keyHeco": process.env.HECO_API_KEY,
+    "keyCronos": process.env.CRONOS_API_KEY,
+    "keyMoonriver": process.env.MOONRIVER_API_KEY,
+    "keyMoonbeam": process.env.MOONBEAM_API_KEY,
+    "keyArbitrum": process.env.ARBITRUM_API_KEY,
+    "keyFantom": process.env.FANTOM_API_KEY,
+    "keyHooscan": process.env.HOOSCAN_API_KEY,
+    "keyOptimism": process.env.OPTIMISM_API_KEY
+}
+``` 
+- The environmental varible method is g
 
-**tested within local viewfinder*
+## Check available API methods of a specific blockchain
+```javascript
+const blockchains = ['ethereum', 'avalanche', 'binance', 'heco', 'cronos', 'moonriver', 'moonbeam', 'arbitrum', 'fantom', 'hooscan', 'optimism']
 
-
+var api = require('@vondas/viewfinder').init(blockchains[0]);
+console.log(api);
+```
 
 # Available Methods & Functions
 
