@@ -1,14 +1,18 @@
 {
     "name": "viewfinder",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "description": "",
     "main": "viewfinder.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "generate-docs": "node_modules/.bin/jsdoc -c jsdoc.json"
     },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/vondas-network/viewfinder.git"
+    },    
     "keywords": [],
-    "author": "",
+    "author": "Christopher Konopka",
     "license": "MIT",
     "dependencies": {
         "axios": "^0.25.0",
