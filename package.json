@@ -1,0 +1,22 @@
+{
+    "name": "viewfinder",
+    "version": "1.0.0",
+    "description": "",
+    "main": "viewfinder.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "generate-docs": "node_modules/.bin/jsdoc -c jsdoc.json"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+        "axios": "^0.25.0",
+        "command-line-args": "^5.2.0",
+        "docdash": "^1.2.0",
+        "dotenv": "^16.0.0"
+    },
+    "devDependencies": {
+        "jsdoc": "^3.6.10"
+    }
+}
