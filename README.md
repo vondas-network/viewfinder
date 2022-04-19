@@ -6,6 +6,9 @@ Multi-chain EVM data for Etherscane & Etherscan-clones
   <img height="255" width="253" src="https://github.com/vondas-network/viewfinder/blob/main/img/247082.png"/>
 </h3>
 
+# What?
+_Viewfinder_ is a single API for most EVM blockchain. The project extends [sebs-etherscan](https://github.com/sebs/etherscan-api) API to more EVM blockchains. New methods are added by scanning each blockchain for their available methods. Each blockchain requires an API key that can be found for free (with restrictions) on Etherscan and Etherscan-clones (ex. Snowtrace, BSCscan, etc.). API keys are loaded using an _.env_ file, more information below.
+
 # Requirements
 
 - [Node.js](https://nodejs.org/en/download/)
@@ -14,7 +17,6 @@ Multi-chain EVM data for Etherscane & Etherscan-clones
 
 - API key (*listed below*)
 
-  
 
 # Support Blockchains
 
