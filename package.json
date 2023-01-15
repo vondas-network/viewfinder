@@ -5,6 +5,7 @@
     "main": "index.js",
     "scripts": {
         "start": "node index.js",
+        "dev": "nodemon index.js",
         "test": "echo \"Error: no test specified\" && exit 1",
         "generate-docs": "node_modules/.bin/jsdoc -c jsdoc.json"
     },
@@ -18,8 +19,7 @@
     "dependencies": {
         "axios": "^0.25.0",
         "command-line-args": "^5.2.0",
-        "docdash": "^1.2.0",
-        "dotenv": "^16.0.0"
+        "docdash": "^1.2.0"
     },
     "devDependencies": {
         "jsdoc": "^3.6.10"
