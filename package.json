@@ -1,9 +1,10 @@
 {
     "name": "viewfinder",
-    "version": "1.0.2",
-    "description": "",
-    "main": "viewfinder.js",
+    "version": "1.0.3",
+    "description": "One API for most EVM blockchain explorers & their clones.",
+    "main": "index.js",
     "scripts": {
+        "start": "node index.js",
         "test": "echo \"Error: no test specified\" && exit 1",
         "generate-docs": "node_modules/.bin/jsdoc -c jsdoc.json"
     },
