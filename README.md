@@ -9,10 +9,75 @@ _Viewfinder_ is a single API for most EVM blockchain. The project extends [sebs-
 
 # Requirements
 - [Node.js](https://nodejs.org/en/download/)
-- [dotenv](https://www.npmjs.com/package/dotenv) 
 - API key (*listed below*)
 
-# Support Blockchains
+# Installation
+## Installing from npm
+``` npm i -g viewfinder ``` 
+
+# Docs
+
+## Request
+```
+curl --location --request GET 'http://localhost:3000/util/txbyhash?blockchain=ethereum&contract=0xe6236684face5ca33c531a011071236d24460fb8&hash=0x6e471b46c6ddfc5164beb5f5ff2581acac826462b33e98471cbafc94f391765e&key=YOUR_API_KEY'
+```
+
+## Usage
+```javascript
+function testTxByHash(obj){
+    var api = require("@vondas/viewfinder").init(obj.blockchain, obj.key);
+    var output = new Promise(async(resolve, reject) => {
+        try {
+            response = api.proxy.eth_getTransactionByHash(obj.hash);
+        } catch (ex) {
+            response = null;
+            reject(ex);
+        }
+        if (response) {
+            response.then(function(txs) {
+                var exportOBJ = {
+                    blockchain: obj.blockchain,
+                    contract: obj.contract,
+                    hash: obj.hash,
+                    tx: txs.result
+                }
+                resolve(exportOBJ);
+            })
+        }
+    });
+    return output;
+}
+```
+
+## Response
+``` json
+{
+    "blockchain": "ethereum",
+    "contract": "0xe6236684face5ca33c531a011071236d24460fb8",
+    "hash": "0x6e471b46c6ddfc5164beb5f5ff2581acac826462b33e98471cbafc94f391765e",
+    "tx": {
+        "blockHash": "0x3c0fbfbfeb94ae16a513abbc1a668e1d1baefcbab7e53808949ddb68887f3304",
+        "blockNumber": "0xd79449",
+        "from": "0x3fe8c83615f7f32d11c65eb8a0a04675d8c4402b",
+        "gas": "0x8774",
+        "gasPrice": "0x2e5b48e700",
+        "hash": "0x6e471b46c6ddfc5164beb5f5ff2581acac826462b33e98471cbafc94f391765e",
+        "input": "0x095ea7b300000000000000000000000068b3465833fb72a70ecdf485e0e4c7bd8665fc45ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "nonce": "0x24",
+        "to": "0xe6236684face5ca33c531a011071236d24460fb8",
+        "transactionIndex": "0x6d",
+        "value": "0x0",
+        "type": "0x0",
+        "chainId": "0x1",
+        "v": "0x25",
+        "r": "0xb45ff9d9f38c028cd27b71e3ad5bc0466268bbdaf8565e7f448ec01cec7b2a73",
+        "s": "0x24487a69f87408d11a80fd6da708e08241819695f5748f37d28a15527412648b"
+    }
+}
+```
+
+# Supported Blockchains
+
 ## Testnet
 
 | Testnet | Blockchain | Endpoint                         |
@@ -37,66 +102,7 @@ _Viewfinder_ is a single API for most EVM blockchain. The project extends [sebs-
 | Hooscan   | https://api.hooscan.com             | https://hooscan.com/apis                     |
 | Optimism  | https://api-optimistic.etherscan.io | https://optimistic.etherscan.io/apis         |
 
-# Installation
-## Installing from npm
-``` npm i -g viewfinder ``` 
-## Installing from source
-- Clone the git repository
-- Install dependencies
-  `npm i`
-- Run the project
-  `node index.js`
-
-# Usage
-
-## Create .env file for Environmental Variables 
-
-- In a new project filder, create a new file for the environmental variables called `.env`
-- Copy/paste the text below into the `.env` file
-- Remove `XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX` and add the associated *API Key* 
-- Save `.env`
-
-````bash
-# ADD API KEYS HERE
-ETHEREUM_API_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-AVALANCHE_API_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-BINANCE_API_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-HECO_API_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-CRONOS_API_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-MOONRIVER_API_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-MOONBEAM_API_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-ARBITRUM_API_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-FANTOM_API_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-HOOSCAN_API_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-OPTIMISM_API_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-````
-- The *API keys* above are associated with an array located in `init.js`
-```
-var chainKey = {
-    "keyEthereum": process.env.ETHEREUM_API_KEY,
-    "keyAvalanche": process.env.AVALANCHE_API_KEY,
-    "keyBinance": process.env.BINANCE_API_KEY,
-    "keyHeco": process.env.HECO_API_KEY,
-    "keyCronos": process.env.CRONOS_API_KEY,
-    "keyMoonriver": process.env.MOONRIVER_API_KEY,
-    "keyMoonbeam": process.env.MOONBEAM_API_KEY,
-    "keyArbitrum": process.env.ARBITRUM_API_KEY,
-    "keyFantom": process.env.FANTOM_API_KEY,
-    "keyHooscan": process.env.HOOSCAN_API_KEY,
-    "keyOptimism": process.env.OPTIMISM_API_KEY
-}
-``` 
-- The environmental varible method is g
-
-## Check available API methods of a specific blockchain
-```javascript
-const blockchains = ['ethereum', 'avalanche', 'binance', 'heco', 'cronos', 'moonriver', 'moonbeam', 'arbitrum', 'fantom', 'hooscan', 'optimism']
-
-var api = require('@vondas/viewfinder').init(blockchains[0]);
-console.log(api);
-```
-
-# Available Methods & Functions
+# Methods & Functions by Blockchain
 
 | Type        | Method                                  | URL                                                          | Ethereum | Polygon | Avalanche | BSC  | Heco | Cronos | Moonriver | Moonbeam | Arbitrum | Fantom | Hooscan |
 | ----------- | --------------------------------------- | ------------------------------------------------------------ | -------- | ------- | --------- | ---- | ---- | ------ | --------- | -------- | -------- | ------ | ------- |
