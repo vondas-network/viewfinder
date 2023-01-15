@@ -1,6 +1,6 @@
 {
-    "name": "viewfinder",
-    "version": "1.0.4",
+    "name": "@vondas/viewfinder",
+    "version": "1.0.5",
     "description": "One API for most EVM blockchain explorers & their clones.",
     "main": "index.js",
     "scripts": {
