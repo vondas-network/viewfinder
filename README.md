@@ -9,10 +9,9 @@ _Viewfinder_ is a single API for most EVM blockchain. The project extends [sebs-
 
 # Requirements
 - [Node.js](https://nodejs.org/en/download/)
-- API key (*listed below*)
+- API key for supported blockchains
 
 # Installation
-## Installing from npm
 ``` npm i -g viewfinder ``` 
 
 # Docs
