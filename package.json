@@ -1,6 +1,6 @@
 {
     "name": "viewfinder",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "One API for most EVM blockchain explorers & their clones.",
     "main": "index.js",
     "scripts": {
